@@ -1,0 +1,9 @@
+pytesseract
+pillow
+transformers
+groq
+python-dotenv
+os
+PyPDF2
+json
+re
