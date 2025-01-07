@@ -57,11 +57,5 @@ def process_students_json(input_file, output_file):
         json.dump(embeddings, f, indent=4)
     print(f"Embeddings saved to {output_file}")
 
-
-# processing both the answersheet and the answer key
-process_students_json("teachers2.json", "embeddingsteach2.json")
+# Example Usage
 process_students_json("students2.json", "embeddingsstu2.json")
-
-'''' 
-                         NOTE
-    Need to Edit this as we are hard coding params as of now we need to pass variables in the arguments '''
