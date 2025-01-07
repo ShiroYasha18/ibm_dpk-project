@@ -1,6 +1,9 @@
 # IntelliGrade
 
  A powerful AI system for intelligent answer script evaluation, combining speed, accuracy, and reliability.
+ ## Flow
+ ![Uploading Untitled (Draft)-1.jpg…]()
+
 
 ## Setup Instructions
 
