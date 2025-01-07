@@ -2,7 +2,7 @@
 
  A powerful AI system for intelligent answer script evaluation, combining speed, accuracy, and reliability.
  ## Flow
- !![Diagram of the flow](flow.jpg)
+ ![Diagram of the flow](flow.jpg)
 
 ### 1. Clone the Repository
 
