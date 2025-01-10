@@ -1,10 +1,10 @@
 import ast
 import os
 import sys
-from data_processing.runtime.pure_python import PythonTranformLauncher
-from data_processiing.utils import Pdf2ParquetPythonTransformConfiguration
+from data_processing.runtime.pure_python import PythonTransformLauncher
+from pdf2parquet.dpk_pdf2parquet.transform_python import Pdf2ParquetPythonTransformConfiguration
 from typing_extensions import runtime
-
+from data_processing.utils import ParamsUtils
 input_folder = 'path/to/input/folder'
 
 output_folder = 'path/to/output/folder'
@@ -24,5 +24,5 @@ params = {
 }
 
 sys.argv =ParamsUtils.dict_to_req(d=params)
-launcher = PythonTranformLauncher(runtime_config= Pdf2ParquetPythonTransformConfiguration())
+launcher = PythonTransformLauncher(runtime_config= Pdf2ParquetPythonTransformConfiguration())
 launcher.launch()
