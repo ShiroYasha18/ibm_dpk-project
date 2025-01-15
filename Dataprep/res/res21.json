@@ -1,0 +1,27 @@
+{
+    "1": {
+        "most_similar_teacher_question": 1,
+        "similarity_score": 0.9969265842233949,
+        "marks_allotted": 4
+    },
+    "2": {
+        "most_similar_teacher_question": 2,
+        "similarity_score": 0.9942665848574989,
+        "marks_allotted": 4
+    },
+    "3": {
+        "most_similar_teacher_question": 3,
+        "similarity_score": 0.9951153781423181,
+        "marks_allotted": 4
+    },
+    "4": {
+        "most_similar_teacher_question": 4,
+        "similarity_score": 0.9911405723681077,
+        "marks_allotted": 4
+    },
+    "5": {
+        "most_similar_teacher_question": 5,
+        "similarity_score": 0.99531816559928,
+        "marks_allotted": 4
+    }
+}
