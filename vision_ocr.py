@@ -1,47 +1,68 @@
-from groq import Groq
-from PIL import Image
-import os
 from dotenv import load_dotenv
+import os
+import google.generativeai as genai
+from PIL import Image
+import logging
 
-from op import api_key
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
+load_dotenv()
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-def process_image(image_path: str) -> str:
-    """Process image and extract handwritten text with specific formatting process only images as of now"""
-    try:
-        groq_client = Groq(api_key=os.environ.get('GROQ_API_KEY'))
+class HandwritingRecognizer:
+    def __init__(self):
+        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.recognition_prompt = """
+        You are an expert in handwriting recognition and text extraction.
+        Please analyze the uploaded image and:
+        1. Extract all handwritten text you can find
+        2. Organize it in a clear, readable format
+        3. If there are multiple answers or sections, separate them clearly
+        4. Note any text that is unclear or ambiguous
+        5. Maintain the original structure of the handwritten content if possible
 
-        with Image.open(image_path) as img:
-            img_data = img
+        Please provide the extracted handwritten text in a clean, structured format.
+        """
 
-        prompt = """Please extract ALL the handwritten text in the image exactly as it appears.
-        Do not write about the layout.
-        Ignore text characteristics like bold, italics, etc.
-        Answers are separated by black horizontal lines, so separate the context accordingly, stating what numbering was given to each answer in the image.
-        Write each answer only once."""
+    def process_image(self, image):
+        try:
+            # Convert image to bytes
+            import io
+            img_byte_arr = io.BytesIO()
+            image.save(img_byte_arr, format='PNG')
+            img_byte_arr = img_byte_arr.getvalue()
 
-        response = groq_client.chat.completions.create(
-            model="llama-3.2-90b-vision-preview",
-            messages=[{
-                "role": "user",
-                "content": prompt,
-                "images": [img_data]
-            }]
-        )
-        return response.choices[0].message.content
+            image_parts = [
+                {
+                    "mime_type": "image/png",
+                    "data": img_byte_arr
+                }
+            ]
 
-    except FileNotFoundError:
-        return "Error: Image file not found"
-    except Exception as e:
-        return f"Error processing image: {str(e)}"
+            response = self.model.generate_content([self.recognition_prompt, image_parts[0]])
+            return response.text
 
-
-def main():
-    load_dotenv()
-    image_path = "me/meow.jpg"
-    result = process_image(image_path)
-    print(result)
-
+        except Exception as e:
+            logger.error(f"Error processing image: {str(e)}")
+            return None
 
 if __name__ == "__main__":
-    main()
+    recognizer = HandwritingRecognizer()
+
+    image_path = "me/meow.jpg"
+
+    try:
+        image = Image.open(image_path)
+
+        extracted_text = recognizer.process_image(image)
+
+        if extracted_text:
+            print("Handwritten text extraction completed successfully!")
+            print("\nExtracted Handwritten Text:")
+            print(extracted_text)
+        else:
+            print("Failed to extract handwritten text from the image.")
+
+    except Exception as e:
+        logger.error(f"Error loading or processing the image: {str(e)}")
