@@ -9,7 +9,7 @@ A powerful AI system for intelligent handwritten answer script evaluation, combi
 
 ---
 ## Frontend
-![Frontend snap](Frontend_IBM.jpg)
+![Frontend snap](Frontend_IBM.png)
 ## Setup
 
 ### Clone the Repository
