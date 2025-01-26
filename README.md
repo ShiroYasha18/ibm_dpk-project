@@ -8,7 +8,8 @@ A powerful AI system for intelligent handwritten answer script evaluation, combi
 ![Flow Diagram](flow.jpg)
 
 ---
-
+## Frontend
+![Frontend snap](Frontend_IBM.jpg)
 ## Setup
 
 ### Clone the Repository
