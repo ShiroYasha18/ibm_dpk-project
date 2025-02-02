@@ -26,6 +26,7 @@ class HandwritingRecognizer:
         You are an expert in handwriting recognition and text extraction.
         Extract all readable handwritten text and maintain the original structure.
         Clearly separate different sections, paragraphs, or responses.
+        Also do Ignore things like bold and italic text and write them as normal text
         """
 
     async def process_image(self, image):

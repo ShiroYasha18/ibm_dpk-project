@@ -82,7 +82,7 @@ def save_to_json(data, output_file):
 
 # Example Usage
 if __name__ == "__main__":
-    parquet_file_path_1 = "/Users/tanishta/Desktop/GitHub/ibm/finalflow/output_folder/extracted_stu.parquet"
-    output_json_path_1 = "/Users/tanishta/Desktop/GitHub/ibm/finalflow/results/output1.json"
+    parquet_file_path_1 = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/parquet/pd.parquet"
+    output_json_path_1 = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/parquet/output1.json"
     
     process_file(parquet_file_path_1, output_json_path_1)

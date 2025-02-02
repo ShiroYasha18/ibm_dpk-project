@@ -1,114 +1,100 @@
-import json
 import pandas as pd
 import re
-import os
+import json
+from typing import Dict, List
 
 
-def read_parquet_file(file_path):
-    """Reads a .parquet file and returns its contents as a pandas DataFrame."""
+def extract_answers(text: str) -> Dict[str, str]:
+    """
+    Extract answers from text based on 'Answer X.Y)' pattern with markdown formatting.
+    """
+    answers = {}
+
     try:
-        df = pd.read_parquet(file_path)
-        return df
+        # Updated pattern to handle markdown formatting with asterisks
+        pattern =r'Answer\s*(\d+\.\d+)\)\s*(.*?)(?=\s*Answer\s*\d+\.\d+\)|$)'
+
+        matches = re.finditer(pattern, text, re.DOTALL)
+
+        for match in matches:
+            answer_num = match.group(1).rstrip('.)')  # Remove trailing dot and parenthesis
+            content = match.group(2).strip()
+
+            # Clean up the content
+            # Remove markdown bullet points
+            content = re.sub(r'^\s*-\s*', '', content, flags=re.MULTILINE)
+            # Remove asterisk bullet points
+            content = re.sub(r'^\s*\*\s*', '', content, flags=re.MULTILINE)
+            # Remove any remaining markdown formatting
+            content = re.sub(r'\*\*|\*', '', content)
+            # Normalize whitespace
+            content = re.sub(r'\s+', ' ', content)
+            content = content.strip()
+
+            if content:
+                answers[answer_num] = content
+                print(f"Found Answer {answer_num}")
+                print(f"Content: {content[:100]}...")
+
     except Exception as e:
-        print(f"Error reading Parquet file {file_path}: {e}")
-        return None
+        print(f"Error in extract_answers: {str(e)}")
+        import traceback
+        traceback.print_exc()
 
-
-def extract_answers_with_pattern(full_text):
-    """
-    Extracts answers based on the pattern 'AnswerX.X)' and organizes them into a list of dictionaries.
-    Removes the pattern from the content for clean output.
-    """
-    pattern =r'Answer\s(\d+\.\d+)\)?\s*(.*?)(?=\s*Answer\s\d+\.\d+|\Z)'
-
-
-    matches = re.finditer(pattern, full_text, re.DOTALL)
-    answers = []
-
-    for match in matches:
-        question_number = match.group(1).strip()  # Extracts "X.X" part
-        answer_content = match.group(2).strip()  # Extracts the answer content
-
-        # Clean the content by removing extra whitespace and formatting
-        cleaned_content = re.sub(r'\s{2,}', ' ', answer_content)
-        cleaned_content = re.sub(r'^[-•·]\s*', '', cleaned_content, flags=re.MULTILINE)
-
-        answers.append({
-            "question_number": question_number,
-            "content": cleaned_content
-        })
-    for i in answers:
-        print(i)
     return answers
 
-  # Add this line before writing to JSON
 
-
-def process_file_with_pattern(file_path, output_folder):
-    """Processes a .parquet file, extracts answers using a specific pattern, and saves to a JSON file."""
+def process_parquet(file_path: str, output_path: str) -> None:
+    """
+    Process parquet file and extract answers into JSON.
+    """
     try:
-        if not file_path.endswith('.parquet'):
-            raise ValueError(f"Unsupported file format: {file_path}. Use .parquet files only.")
-
-        df = read_parquet_file(file_path)
-        if df is None:
-            print(f"Failed to read {file_path}.")
-            return
-
-        if 'contents' not in df.columns:
-            print(f"Column 'contents' not found in the DataFrame.")
-            return
+        print(f"Reading parquet file: {file_path}")
+        df = pd.read_parquet(file_path)
+        print(f"DataFrame shape: {df.shape}")
 
         all_answers = []
+
         for idx, row in df.iterrows():
-            full_text = row.get('contents', '')
+            content = row['contents']
+            filename = row['filename']
+            document_id = row['document_id']
 
-            if not isinstance(full_text, str) or not full_text.strip():
-                print(f"Skipping empty or invalid content at row {idx}.")
-                continue
+            if isinstance(content, str):
+                print(f"\nProcessing content from file: {filename}")
+                print("First 200 characters of content:")
+                print(content[:200])
 
-            print(f"Processing content at row {idx}: {full_text[:100]}...")
+                # Extract answers from content
+                answers = extract_answers(content)
+                print(f"Found {len(answers)} answers")
 
-            extracted_answers = extract_answers_with_pattern(full_text)
-            all_answers.extend(extracted_answers)
+                if answers:
+                    result = {
+                        "document_id": document_id,
+                        "filename": filename,
+                        "answers": answers
+                    }
+                    all_answers.append(result)
+                    print(f"Successfully extracted answers for {filename}")
 
-        output_file = os.path.join(output_folder, os.path.basename(file_path).replace(".parquet", ".json"))
+        if all_answers:
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(all_answers, f, indent=2, ensure_ascii=False)
+            print(f"\nResults saved to: {output_path}")
+            print("\nFirst document answers:")
+            print(json.dumps(all_answers[0]['answers'], indent=2))
+        else:
+            print("\nNo answers were extracted from any document")
 
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(all_answers, f, indent=4, ensure_ascii=False)
-
-        print(f"Successfully saved extracted answers to {output_file}")
-
-    except Exception as e:
-        print(f"Error processing file {file_path}: {e}")
-
-
-def process_folder(input_folder, output_folder):
-    """Processes all .parquet files in the given input folder and saves the extracted JSON files to the output folder."""
-    try:
-        if not os.path.exists(input_folder):
-            raise FileNotFoundError(f"Input folder '{input_folder}' does not exist.")
-
-        if not os.path.exists(output_folder):
-            os.makedirs(output_folder)
-
-        parquet_files = [f for f in os.listdir(input_folder) if f.endswith('.parquet')]
-
-        if not parquet_files:
-            print(f"No .parquet files found in {input_folder}.")
-            return
-
-        print(f"Found {len(parquet_files)} .parquet files. Processing...")
-
-        for parquet_file in parquet_files:
-            input_file_path = os.path.join(input_folder, parquet_file)
-            process_file_with_pattern(input_file_path, output_folder)
-
-        print("Processing completed.")
+            # Debug: Print the raw content with line numbers
+            print("\nDebug: Raw content with line numbers:")
+            for i, line in enumerate(content.split('\n')):
+                print(f"{i + 1}: {line}")
 
     except Exception as e:
-        print(f"Error processing folder: {e}")
-if __name__ == '__main__':
-    input_folder="/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/parquet"
-    output_folder="/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/Json_with_answers"
-    process_folder(input_folder, output_folder)
+        print(f"Error processing file: {str(e)}")
+        import traceback
+        traceback.print_exc()
+
+
