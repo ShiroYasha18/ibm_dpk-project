@@ -119,3 +119,10 @@ output_file = "/Users/tanishta/Desktop/Dataprep/res2.json"
 # You can change the difficulty to "easy", "medium", or "hard"
 difficulty_level = "hard"
 main(teacher_file, student_file, output_file, difficulty=difficulty_level)
+
+
+'''                           NOTE                                   
+            AGAIN OVER HERE WE ARE PASSING LOCAL PATHS WE NEED TO PASS THE FOLDER PATHS 
+
+
+'''

@@ -1,101 +1,87 @@
 # IntelliGrade
 
-A powerful AI system for intelligent handwritten answer script evaluation, combining speed, accuracy, and reliability using Google's Gemini 1.5 Flash model for visual question answering and handwriting OCR.
+ A powerful AI system for intelligent answer script evaluation, combining speed, accuracy, and reliability.
+ ## Flow
+ ![Diagram of the flow](flow.jpg)
 
----
+### 1. Clone the Repository
 
-## Flow
-![Flow Diagram](flow.jpg)
-
----
-## Frontend
-![Frontend snap](Frontend_IBM.png)
-## Setup
-
-### Clone the Repository
 ```bash
-git clone https://github.com/ShiroYasha18/ibm_dpk-project
+git clone https://github.com/yourusername/image-text-extractor.git](https://github.com/ShiroYasha18/ibm_dpk-project
 cd ibm_dpk-project
 ```
 
-### Set Up Virtual Environment
+### 2. Set Up Virtual Environment
 
-#### For Windows:
+For Windows:
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-#### For macOS/Linux:
+For macOS/Linux:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Install Requirements
+### 3. Install Requirements
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### Get Google Generative AI API Key
-1. Go to [Google Cloud Console](https://console.cloud.google.com/).
-2. Enable the Generative AI API.
-3. Generate an API key from the "Credentials" section.
-4. Copy your API key.
+### 4. Get Groq API Key
 
-### Set Up Environment Variables
-1. Create a file named `.env` in the project root directory.
-2. Add the API key to the file:
-   ```env
-   GOOGLE_API_KEY="your_api_key_here"
-   ```
+1. Go to [Groq's website](https://console.groq.com/)
+2. Sign up or log in to your account
+3. Navigate to API section
+4. Generate a new API key
+5. Copy your API key
 
-### Run the Application
+### 5. Set Up Environment Variables
+
+1. Create a new file named `.env` in the project root directory
+2. Add your Groq API key to the `.env` file:
+```
+GROQ_API_KEY="your_api_key_here"
+```
+3. Save the file
+
+### 6. Running the Application
+
 ```bash
 python image_processor.py
 ```
 
----
+
 
 ## Requirements
 
-For a full list of dependencies, see the `requirements.txt` file.
-
----
+See `requirements.txt` for a full list of dependencies
 
 ## Notes
-- The AI utilizes Google's Gemini 1.5 Flash model, a powerful tool within the Generative AI API, for both visual question answering and accurate handwriting OCR.
-- Keep your `.env` file confidential and never commit it to version control.
-- Supported image formats: PNG, JPEG.
-- Exclude the `venv` folder from version control.
 
----
+- Keep your `.env` file private and never commit it to version control
+- Make sure your images are in a supported format (JPEG, PNG)
+- The virtual environment folder (`venv`) should also be excluded from version control
 
 ## Troubleshooting
-- Ensure your virtual environment is activated.
-- Verify your Google Generative AI API key is correct.
-- Check the location of your `.env` file.
-- Make sure all dependencies are installed correctly.
 
----
+If you encounter issues:
+1. Ensure your virtual environment is activated
+2. Verify your Groq API key is correct
+3. Check that your `.env` file is in the correct location
+4. Make sure all dependencies are installed correctly
 
 ## Contributing
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. Open a Pull Request.
 
----
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+This project is licensed under the MIT License - see the LICENSE file for details
