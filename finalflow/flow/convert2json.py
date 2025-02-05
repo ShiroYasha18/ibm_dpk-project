@@ -1,100 +1,75 @@
+import os
+import json
 import pandas as pd
 import re
-import json
-from typing import Dict, List
+import wat  # Import similarity comparison module
 
 
-def extract_answers(text: str) -> Dict[str, str]:
-    """
-    Extract answers from text based on 'Answer X.Y)' pattern with markdown formatting.
-    """
+def extract_answers(text: str):
+    """Extract answers with proper formatting."""
     answers = {}
-
     try:
-        # Updated pattern to handle markdown formatting with asterisks
-        pattern =r'Answer\s*(\d+\.\d+)\)\s*(.*?)(?=\s*Answer\s*\d+\.\d+\)|$)'
-
+        pattern = r'Answer\s*(\d+\.\d+)\)?\s*(.*?)(?=\s*Answer\s*\d+\.\d+|\Z)'
         matches = re.finditer(pattern, text, re.DOTALL)
 
         for match in matches:
-            answer_num = match.group(1).rstrip('.)')  # Remove trailing dot and parenthesis
+            number = match.group(1).strip()
             content = match.group(2).strip()
+            content = re.sub(r'\s+', ' ', content)  # Normalize whitespace
+            answers[number] = content
 
-            # Clean up the content
-            # Remove markdown bullet points
-            content = re.sub(r'^\s*-\s*', '', content, flags=re.MULTILINE)
-            # Remove asterisk bullet points
-            content = re.sub(r'^\s*\*\s*', '', content, flags=re.MULTILINE)
-            # Remove any remaining markdown formatting
-            content = re.sub(r'\*\*|\*', '', content)
-            # Normalize whitespace
-            content = re.sub(r'\s+', ' ', content)
-            content = content.strip()
-
-            if content:
-                answers[answer_num] = content
-                print(f"Found Answer {answer_num}")
-                print(f"Content: {content[:100]}...")
-
+        return answers
     except Exception as e:
-        print(f"Error in extract_answers: {str(e)}")
-        import traceback
-        traceback.print_exc()
-
-    return answers
+        print(f"Error extracting answers: {e}")
+        return {}
 
 
-def process_parquet(file_path: str, output_path: str) -> None:
-    """
-    Process parquet file and extract answers into JSON.
-    """
+def process_parquet_file(input_file: str, output_file: str):
+    """Processes a single parquet file and saves extracted answers in JSON."""
     try:
-        print(f"Reading parquet file: {file_path}")
-        df = pd.read_parquet(file_path)
-        print(f"DataFrame shape: {df.shape}")
+        df = pd.read_parquet(input_file)
 
-        all_answers = []
+        result = [{
+            "document_id": str(df.iloc[0].get('document_id', '')),
+            "filename": str(df.iloc[0].get('filename', '')),
+            "answers": extract_answers(df.iloc[0].get('contents', ''))
+        }]
 
-        for idx, row in df.iterrows():
-            content = row['contents']
-            filename = row['filename']
-            document_id = row['document_id']
+        os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
-            if isinstance(content, str):
-                print(f"\nProcessing content from file: {filename}")
-                print("First 200 characters of content:")
-                print(content[:200])
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
 
-                # Extract answers from content
-                answers = extract_answers(content)
-                print(f"Found {len(answers)} answers")
-
-                if answers:
-                    result = {
-                        "document_id": document_id,
-                        "filename": filename,
-                        "answers": answers
-                    }
-                    all_answers.append(result)
-                    print(f"Successfully extracted answers for {filename}")
-
-        if all_answers:
-            with open(output_path, 'w', encoding='utf-8') as f:
-                json.dump(all_answers, f, indent=2, ensure_ascii=False)
-            print(f"\nResults saved to: {output_path}")
-            print("\nFirst document answers:")
-            print(json.dumps(all_answers[0]['answers'], indent=2))
-        else:
-            print("\nNo answers were extracted from any document")
-
-            # Debug: Print the raw content with line numbers
-            print("\nDebug: Raw content with line numbers:")
-            for i, line in enumerate(content.split('\n')):
-                print(f"{i + 1}: {line}")
-
+        return result
     except Exception as e:
-        print(f"Error processing file: {str(e)}")
-        import traceback
-        traceback.print_exc()
+        print(f"Error processing {input_file}: {e}")
+        return []
 
 
+def process_parquet_directory(input_dir: str, output_dir: str, similarity_output: str):
+    """Processes multiple parquet files, extracts answers to JSON, and computes similarity scores."""
+    all_data = []
+
+    if not os.path.exists(input_dir):
+        print(f"Error: Directory {input_dir} does not exist.")
+        return
+
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(similarity_output, exist_ok=True)
+
+    for file in os.listdir(input_dir):
+        if file.endswith(".parquet"):
+            file_path = os.path.join(input_dir, file)
+            output_file = os.path.join(output_dir, f"{file.replace('.parquet', '.json')}")  # Fix path issue
+            print(f"Processing Parquet file: {file_path}")
+            extracted_data = process_parquet_file(file_path, output_file)
+
+            if extracted_data:
+                all_data.extend(extracted_data)
+
+    if all_data:
+        print(f"Saved {len(all_data)} answers to {output_dir}")
+
+    # Compute similarity scores after extracting all JSONs
+    wat.compare_jsons(output_dir, output_dir, similarity_output)
+    print(f"Similarity scores saved in {similarity_output}")

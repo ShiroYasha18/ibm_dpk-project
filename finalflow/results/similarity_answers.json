@@ -1,0 +1,44 @@
+[
+    {
+        "question_number": "2.4",
+        "document_1": "Symbols in chemical equation mean: - (i) \u203a - Gas evolved - (ii) \ufb02 - precipitate formed - (iii) (s) - solid state - (iv) (l) - liquid state - (v) (g) - gaseous state - (vi) (aq) - aqueous solution D",
+        "document_2": "Symbols in chemical equations mean: i) \u2191 - Gas evolved ii) \u2193 - Precipitate formed iii) - (s) - Solid state iv) (l) - Liquid state v) (g) - Gaseous state vi) (aq) - Aqueous solution",
+        "similarity_score": 0.9729100477944612
+    },
+    {
+        "question_number": "1.3",
+        "document_1": "Valency of nitrogen in: - 1) NO: +2 - 2) N n O: +1 - 3) NO n : +4",
+        "document_2": "Valency of nitrogen in: i) NO: +2 ii) N \u2082 O: +1 iii) NO \u2082 : +4 Additional Questions",
+        "similarity_score": 0.9481243159136168
+    },
+    {
+        "question_number": "2.3",
+        "document_1": "Examples of chemical equations: (a) One product : 2H2 + O2 \ufb01 2H2O - (b) Two product : CaCO3 (b) Two product : CaCO3 \ufb01 CaO + CO2 (c) Three Products : 4HNO3 \ufb01 2H2O + 4NO2 + O2 - (d) four Products : 2KClO3 (d) four Products : 2KClO3 \ufb01 2KCl + 2O2 + O2 +",
+        "document_2": "Examples of chemical equations: a) One product: 2H \u2082 + O \u2082 \u2192 2H \u2082 O b) Two \u2083 \u2192 CaO + CO \u2082 c) Three products: 4HNO \u2083 \u2192 2H \u2082 O + 4NO \u2082 + O \u2082 d) Four products: 2KClO \u2192 2KCl + 2O \u2082 + O \u2082 + Heat products: CaCO products: 2KClO \u2083",
+        "similarity_score": 0.9796621032646857
+    },
+    {
+        "question_number": "2.1",
+        "document_1": "Three symbols whose first letter is the symbol for them: - (1) Boron (B) - (2) Carbon (C) - (3) Hydrogen (H) ## Page 2",
+        "document_2": "a) Three metals whose symbols are derived from first letter of their name: - \u25cf Boron (B) - \u25cf Carbon (C) - \u25cf Potassium (K) b) Three metals whose symbols are derived from Latin names: - \u25cf Gold (Au from Aurum) - \u25cf Silver (Ag from Argentum) - \u25cf Iron (Fe from Ferrum)",
+        "similarity_score": 0.884629496471545
+    },
+    {
+        "question_number": "2.2",
+        "document_1": "The eight metals showing variable valency: ``` 1) Iron (Fe) : +2, +3 2) Copper (Cu) : +1, +2 3) Mercury (Hg) : +1, +2 4) Tin (Sn) : +2, +4 5) Lead (Pb) : +2, +4 6) Gold (Au) : +1, +3 7) Chromium (Cr) : +2, +3, +6 8) Manganese (Mn) : +2, +3, +4, +6, +7 ```",
+        "document_2": "Eight metals showing variable valency: - 1. Iron (Fe): +2, +3 - 2. Copper (Cu): +1, +2 - 3. Mercury (Hg): +1, +2 - 4. Tin (Sn): +2, +4 - 5. Lead (Pb): +2, +4 - 6. Gold (Au): +1, +3 - 7. Chromium (Cr): +2, +3, +6 - 8. Manganese (Mn): +2, +3, +4, +6, +7 Valency of sulphur in: a) SO \u2082 : +4 b) SO \u2083 : +6",
+        "similarity_score": 0.970841858244511
+    },
+    {
+        "question_number": "1.1",
+        "document_1": "If XCl n then X should be a metal with valency 2. Sulphate Formula: XSO n Hydroxide Formula: X(OH) n",
+        "document_2": "If XCl \u2082 is the chloride, then metal X has valency 2. Therefore: - \u25cf Sulphate formula: XSO \u2084 - \u25cf Hydroxide formula: X(OH) \u2082",
+        "similarity_score": 0.9418423914696208
+    },
+    {
+        "question_number": "1.2",
+        "document_1": "XN is nitride. X is a valency 3 metal as nitrogen has valency 3. Therefore, Sulphate's formula would be X n (SO n ) n and Hydroxide's formula would be X(OH) n",
+        "document_2": "If XN is the nitride, metal X has valency 3 (since nitrogen has valency 3). Therefore: i) Sulphate formula: X \u2082 (SO \u2084 ) \u2083 ii) Hydroxide formula: X(OH) \u2083",
+        "similarity_score": 0.973166289812949
+    }
+]
