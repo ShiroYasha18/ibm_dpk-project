@@ -11,11 +11,13 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from pdf2parq import convert_pdf_to_parquet
 import convert2json
+import json
+import wat
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Load API key from .env file
+
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
@@ -116,6 +118,36 @@ class PDFHandwritingExtractor:
             logger.error(f"Error creating output PDF: {str(e)}")
             return False
 
+
+import os
+import convert2json  # Ensure this module has process_parquet
+
+
+def process_parquet_directory(input_dir: str, output_json: str):
+
+    all_data = []
+
+    if not os.path.exists(input_dir):
+        print(f"Error: Directory {input_dir} does not exist.")
+        return
+
+    for file in os.listdir(input_dir):
+        if file.endswith(".parquet"):
+            file_path = os.path.join(input_dir, file)
+            print(f"Processing Parquet file: {file_path}")
+            extracted_data = convert2json.process_folder(file_path, output_json)
+
+            if extracted_data:
+                all_data.extend(extracted_data)
+
+    if all_data:
+        with open(output_json, 'w', encoding='utf-8') as f:
+            json.dump(all_data, f, indent=2, ensure_ascii=False)
+
+
+
+
+
 async def main():
     input_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Handwritten/meow.pdf"  # Input PDF
     extracted_text_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
@@ -124,8 +156,10 @@ async def main():
     output_folder_parquet_answersheet = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/parquet"
     input_folder_parquet_answerkey = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/clean_pdf"
     output_folder_parquet_answerkey= "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/parquet"
-    output_json_answerkey="/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/Json_with_answers"
-    output_json_answersheet="/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Json_with_answers"
+    output_json_answerkey="/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/Json_with_answers/"
+    output_json_answersheet="/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Json_with_answers/"
+    result= "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/results"
+
     extractor = PDFHandwritingExtractor()
 
     # Convert PDF to images
@@ -178,17 +212,22 @@ async def main():
     # now converting the parquets to jsons for both answersheet and answerkey
     try:
         logger.info("Extracting answers from Answer Key Parquet files and saving to JSON...")
-        convert2json.process_folder(output_folder_parquet_answerkey, output_json_answerkey)
-        logger.info(f"Successfully saved extracted answers to {output_json_answerkey}")
+        process_parquet_directory(output_folder_parquet_answerkey, output_json_answerkey)
     except Exception as e:
         logger.error(f"Error extracting answers from Answer Key Parquet: {e}")
     try:
-        # Extract answers from Answer Sheet Parquet files and save to JSON
         logger.info("Extracting answers from Answer Sheet Parquet files and saving to JSON...")
-        convert2json.process_folder(output_folder_parquet_answersheet, output_json_answersheet)
-        logger.info(f"Successfully saved extracted answers to {output_json_answersheet}")
+        process_parquet_directory(output_folder_parquet_answersheet, output_json_answersheet)
     except Exception as e:
         logger.error(f"Error extracting answers from Answer Sheet Parquet: {e}")
+
+    try:
+        logger.info("Comparing Jsons with Cosine Similarity...")
+        wat.compare_jsons(output_json_answersheet,output_json_answerkey,result)
+
+    except Exception as e:
+        logger.error(f"Error comparing: {e}")
+
 
 
 if __name__ == "__main__":
