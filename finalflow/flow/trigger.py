@@ -13,7 +13,7 @@ from pdf2parq import convert_pdf_to_parquet
 import convert2json
 import json
 import wat
-# Configure logging
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -135,7 +135,7 @@ def process_parquet_directory(input_dir: str, output_json: str):
         if file.endswith(".parquet"):
             file_path = os.path.join(input_dir, file)
             print(f"Processing Parquet file: {file_path}")
-            extracted_data = convert2json.process_folder(file_path, output_json)
+            extracted_data = convert2json.process_file(file_path, output_json)
 
             if extracted_data:
                 all_data.extend(extracted_data)
@@ -149,7 +149,7 @@ def process_parquet_directory(input_dir: str, output_json: str):
 
 
 async def main():
-    input_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Handwritten/meow.pdf"  # Input PDF
+    input_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"  # Input PDF
     extracted_text_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
     temp_image_dir = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/tempimg"
     input_folder_parquet_answersheet = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/clean_pdf"
