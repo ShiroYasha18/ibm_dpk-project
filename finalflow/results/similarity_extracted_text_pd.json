@@ -1,0 +1,44 @@
+{
+    "file1": {
+        "path": "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Json_with_answers/extracted_text.json",
+        "document_id": "9334e81c-0d1e-457b-92e9-7b66767b22d5",
+        "filename": "extracted_text.pdf"
+    },
+    "file2": {
+        "path": "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/Json_with_answers/pd.json",
+        "document_id": "1906ab74-d33d-40e0-b79b-c1f7261ba466",
+        "filename": "pd.pdf"
+    },
+    "comparisons": [
+        {
+            "question_number": "1A",
+            "answer1": "If XCl n then X should be a metal with valency 2 Therefore - (1) Sulphate Formula : XSO n (2) Hydroxide Formula : X(OH) n",
+            "answer2": "If XCl ₂ is the chloride, then metal X has valency 2. Therefore: - ● Sulphate formula: XSO ₄ - ● Hydroxide formula: X(OH) ₂",
+            "similarity_score": 0.9829202890396118
+        },
+        {
+            "question_number": "1B",
+            "answer1": "X n N is nitride. X is a valency 3 metal as nitrogen has valency Therefore Sulphate's formula would be X n (SO n ) n and Hydroxide formula would be X(OH) n",
+            "answer2": "If XN is the nitride, metal X has valency 3 (since nitrogen has valency 3). Therefore: i) Sulphate formula: X ₂ (SO ₄ ) ₃ ii) Hydroxide formula: X(OH) ₃ - i)",
+            "similarity_score": 0.9812030792236328
+        },
+        {
+            "question_number": "1C",
+            "answer1": "valency of Nitrogen in: 1) NO : +2 2) N n O : +1 3) NO n : +4",
+            "answer2": "Valency of nitrogen in: i) NO: +2 ii) N ₂ O: +1 iii) NO ₂ : +4 Additional Questions",
+            "similarity_score": 0.9830827713012695
+        },
+        {
+            "question_number": "2B",
+            "answer1": "The eight metals showing variable valency 1) Iron (Fe) : +2, +3 (2) Copper (Cu) : +1, +2 (3) Mercury (Hg) : +1, +2 (4) Tin (Sn) : +2, +4 (5) Lead (Pb) : +2, +4 (6) Gold (Au) : +1, +3 (7) Chromium (Cr) : +2, +3, +6 (8) Manganese (Mn) : +2, +3, +4, +6, +7",
+            "answer2": "Eight metals showing variable valency: - 1. Iron (Fe): +2, +3 - 2. Copper (Cu): +1, +2 - 3. Mercury (Hg): +1, +2 - 4. Tin (Sn): +2, +4 - 5. Lead (Pb): +2, +4 - 6. Gold (Au): +1, +3 - 7. Chromium (Cr): +2, +3, +6 - 8. Manganese (Mn): +2, +3, +4, +6, +7 Valency of sulphur in: a) SO ₂ : +4 b) SO ₃ : +6",
+            "similarity_score": 0.9852753281593323
+        },
+        {
+            "question_number": "2C",
+            "answer1": "Examples of Chemical Equations: ## Page 2 (a) One product : 2H2 + O2 ﬁ 2H2O - (b) Two Products : CaCO3 (b) Two Products : CaCO3 ﬁ CaO + CO2 + (c) Three Products : 4HNO3 ﬁ 2H2O + 4NO2 + O2 - (d) Four Products : 2KClO3 (d) Four Products : 2KClO3 ﬁ 2KCl + 2O2 + O2 › + D",
+            "answer2": "Examples of chemical equations: a) One product: 2H ₂ + O ₂ → 2H ₂ O b) Two products: CaCO ₃ → CaO + CO ₂ c) Three products: 4HNO ₃ → 2H ₂ O + 4NO ₂ + O ₂ d) Four products: 2KClO ₃ → 2KCl + 2O ₂ + O ₂ + Heat",
+            "similarity_score": 0.9723445773124695
+        }
+    ]
+}

@@ -10,6 +10,14 @@ def extract_answers(text: str):
     answers = {}
     try:
         pattern = r'Answer\s*(?:(\d+\.\d+)|(\d+[A-Za-z]))\)?\s*(.*?)(?=\s*Answer\s*(?:\d+\.\d+|\d+[A-Za-z])|\Z)'
+
+        '''       Patterns it can match :
+       Answer1.1) Some text
+       Answer 2.3) Other text
+       Answer 2C) More text 
+       Answer 5A Different text
+        '''
+
         matches = re.finditer(pattern, text, re.DOTALL)
 
         for match in matches:
@@ -60,7 +68,7 @@ def process_parquet_directory(input_dir: str, output_dir: str, similarity_output
     if os.listdir(output_dir):
         print(f"Saved extracted answers to {output_dir}")
 
-    # Compute similarity scores after extracting all JSONs
+
     wat.compare_jsons(output_dir, output_dir, similarity_output)
     print(f"Similarity scores saved in {similarity_output}")
 

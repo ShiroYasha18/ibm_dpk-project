@@ -32,10 +32,7 @@ class GraniteEmbeddings:
 
 
 def natural_sort_key(s):
-    """
-    Return a key that can be used for natural alphanumeric sorting.
-    For example: ["1A", "2A", "10A"] will be sorted correctly.
-    """
+
     return [int(text) if text.isdigit() else text.lower()
             for text in re.split('([0-9]+)', s)]
 
@@ -43,57 +40,51 @@ def natural_sort_key(s):
 def compare_jsons(folder1, folder2, output_folder):
     """Compares JSON answer files in two folders regardless of filenames."""
 
-    # Get all JSON files from both folders
     files1 = [f for f in os.listdir(folder1) if f.endswith(".json")]
     files2 = [f for f in os.listdir(folder2) if f.endswith(".json")]
 
     os.makedirs(output_folder, exist_ok=True)
 
     try:
-        # Load the embedding model
         embedding_model = GraniteEmbeddings()
     except Exception as e:
         print(f"Error loading Granite model: {e}")
         return
 
-    # Compare each file from folder1 with each file from folder2
     for file1, file2 in product(files1, files2):
         json_path1 = os.path.join(folder1, file1)
         json_path2 = os.path.join(folder2, file2)
 
         try:
-            # Load JSON files
+
             with open(json_path1, "r", encoding="utf-8") as f1:
                 data1 = json.load(f1)
             with open(json_path2, "r", encoding="utf-8") as f2:
                 data2 = json.load(f2)
 
-            # Ensure we have data and it's in the expected format
             if not isinstance(data1, list) or not isinstance(data2, list) or not data1 or not data2:
                 print(f"Skipping comparison of {file1} and {file2} - invalid JSON structure")
                 continue
 
-            # Extract answer dictionaries
             answers_dict1 = data1[0].get("answers", {})
             answers_dict2 = data2[0].get("answers", {})
 
             similarity_results = []
 
-            # Only compare answers with matching indices
-            common_keys = set(answers_dict1.keys()) & set(answers_dict2.keys())
-
+            common_keys = set(answers_dict1.keys()) & set(answers_dict2.keys()) # only compare if answersheet got the same answer index as the answerkey
+# addresses the mising answers part  and also empty answers part
             if not common_keys:
                 print(f"No matching answer indices found between {file1} and {file2}")
                 continue
 
-            # Sort keys alphanumerically (1A, 1B, 2A, 2B, etc.)
+
             sorted_keys = sorted(common_keys, key=natural_sort_key)
 
             for key in sorted_keys:
                 answer1 = answers_dict1[key].strip()
                 answer2 = answers_dict2[key].strip()
 
-                # Skip if either answer is empty or just contains "```"
+
                 if not answer1 or not answer2 or answer1 == "```" or answer2 == "```":
                     print(f"Skipping question {key} - empty or invalid answer")
                     continue
@@ -113,12 +104,12 @@ def compare_jsons(folder1, folder2, output_folder):
                 except Exception as e:
                     print(f"Error processing question {key} when comparing {file1} and {file2}: {e}")
 
-            # Save results only if we have comparisons
+
             if similarity_results:
                 output_filename = f"similarity_{os.path.splitext(file1)[0]}_{os.path.splitext(file2)[0]}.json"
                 output_path = os.path.join(output_folder, output_filename)
 
-                # Sort similarity results by question number
+
                 similarity_results.sort(key=lambda x: natural_sort_key(x["question_number"]))
 
                 with open(output_path, "w", encoding="utf-8") as outf:
