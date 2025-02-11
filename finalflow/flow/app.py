@@ -50,7 +50,7 @@ Do not add any descriptions, explanations, or formatting notes.
 Strictly maintain:
 - Original structure (paragraphs, sections, equations).
 - Subscripts, superscripts, and mathematical symbols as they appear.
-- If any part is scribbled or unreadable, simply replace it with "Scribble"'.
+- If any part is scribbled or unreadable, simply ignore it.
 
 **Do not add:**
 - Comments on legibility, handwriting style, or clarity.
@@ -188,7 +188,7 @@ def process_parquet_directory(input_dir: str, output_json: str):
 
 
 async def main():
-    input_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"  # Input PDF
+    input_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"
     extracted_text_pdf = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
     temp_image_dir = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/tempimg"
     input_folder_parquet_answersheet = "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/clean_pdf"

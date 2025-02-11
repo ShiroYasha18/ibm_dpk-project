@@ -85,7 +85,7 @@ def compare_jsons(folder1, folder2, output_folder):
                 answer2 = answers_dict2[key].strip()
 
 
-                if not answer1 or not answer2 or answer1 == "```" or answer2 == "```":
+                if not answer1 or not answer2 or answer1 == "```" or answer2 == "```" or answer1 == "**)"or answer2== "**)" :
                     print(f"Skipping question {key} - empty or invalid answer")
                     continue
 
