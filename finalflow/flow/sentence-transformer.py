@@ -2,37 +2,25 @@ import os
 import json
 import numpy as np
 from transformers import AutoTokenizer, AutoModel
-from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
 import torch
 from itertools import product
 import re
 
 
-class GraniteEmbeddings:
+class SentenceTransformerEmbeddings:
     def __init__(self):
-        """Initialize IBM Granite Embedding Model"""
-        model_name = "ibm-granite/granite-embedding-125m-english"
+        """Initialize Sentence-Transformer Embedding Model"""
+        model_name = "sentence-transformers/all-mpnet-base-v2"
 
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModel.from_pretrained(model_name)
+        self.model = SentenceTransformer(model_name)
 
     def embed_text(self, text):
         """Generate embedding for a single text"""
-        inputs = self.tokenizer(
-            text,
-            return_tensors="pt",
-            padding=True,
-            truncation=True
-        )
-
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-
-        return outputs.last_hidden_state[:, 0, :].cpu().numpy()
+        return self.model.encode(text, convert_to_numpy=True)
 
 
 def natural_sort_key(s):
-
     return [int(text) if text.isdigit() else text.lower()
             for text in re.split('([0-9]+)', s)]
 
@@ -46,9 +34,9 @@ def compare_jsons(folder1, folder2, output_folder):
     os.makedirs(output_folder, exist_ok=True)
 
     try:
-        embedding_model = GraniteEmbeddings()
+        embedding_model = SentenceTransformerEmbeddings()
     except Exception as e:
-        print(f"Error loading Granite model: {e}")
+        print(f"Error loading Sentence-Transformer model: {e}")
         return
 
     for file1, file2 in product(files1, files2):
@@ -56,7 +44,6 @@ def compare_jsons(folder1, folder2, output_folder):
         json_path2 = os.path.join(folder2, file2)
 
         try:
-
             with open(json_path1, "r", encoding="utf-8") as f1:
                 data1 = json.load(f1)
             with open(json_path2, "r", encoding="utf-8") as f2:
@@ -71,21 +58,19 @@ def compare_jsons(folder1, folder2, output_folder):
 
             similarity_results = []
 
-            common_keys = set(answers_dict1.keys()) & set(answers_dict2.keys()) # only compare if answersheet got the same answer index as the answerkey
-# addresses the mising answers part  and also empty answers part
+            common_keys = set(answers_dict1.keys()) & set(answers_dict2.keys())
+
             if not common_keys:
                 print(f"No matching answer indices found between {file1} and {file2}")
                 continue
 
-
             sorted_keys = sorted(common_keys, key=natural_sort_key)
 
             for key in sorted_keys:
-                answer1 = answers_dict1[key].strip()
-                answer2 = answers_dict2[key].strip()
+                answer1 = re.sub(r'[*●]', '', answers_dict1[key].strip())
+                answer2 = re.sub(r'[*●]', '', answers_dict2[key].strip())
 
-
-                if not answer1 or not answer2 or answer1 == "```" or answer2 == "```" or answer1 == "**"or answer2== "**" :
+                if not answer1 or not answer2 or answer1 == "```" or answer2 == "```" or answer1 == "**)" or answer2 == "**)":
                     print(f"Skipping question {key} - empty or invalid answer")
                     continue
 
@@ -93,7 +78,8 @@ def compare_jsons(folder1, folder2, output_folder):
                     embedding1 = embedding_model.embed_text(answer1)
                     embedding2 = embedding_model.embed_text(answer2)
 
-                    similarity_score = float(cosine_similarity(embedding1, embedding2)[0][0])
+                    similarity_score = float(
+                        np.dot(embedding1, embedding2) / (np.linalg.norm(embedding1) * np.linalg.norm(embedding2)))
 
                     similarity_results.append({
                         "question_number": key,
@@ -104,11 +90,9 @@ def compare_jsons(folder1, folder2, output_folder):
                 except Exception as e:
                     print(f"Error processing question {key} when comparing {file1} and {file2}: {e}")
 
-
             if similarity_results:
                 output_filename = f"similarity_{os.path.splitext(file1)[0]}_{os.path.splitext(file2)[0]}.json"
                 output_path = os.path.join(output_folder, output_filename)
-
 
                 similarity_results.sort(key=lambda x: natural_sort_key(x["question_number"]))
 

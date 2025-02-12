@@ -1,3 +1,10 @@
+import sys
+import os
+
+# Get the absolute path of the parent directory where pdf2parq.py is located
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))  # Parent dir
+
 import os
 import io
 import logging
