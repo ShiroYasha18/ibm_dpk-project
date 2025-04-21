@@ -10,13 +10,14 @@
 # limitations under the License.
 ################################################################################
 import sys
+import time
 
 from data_processing.runtime.pure_python import PythonTransformLauncher
 from data_processing.runtime.pure_python.runtime_configuration import (
     PythonTransformRuntimeConfiguration,
 )
 from data_processing.utils import ParamsUtils, get_logger
-from finalflow.flow.pdf2parquet.dpk_pdf2parquet.transform import Pdf2ParquetTransformConfiguration
+from pdf2parquet.dpk_pdf2parquet.transform import Pdf2ParquetTransformConfiguration
 
 
 logger = get_logger(__name__)

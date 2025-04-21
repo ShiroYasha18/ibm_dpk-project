@@ -52,7 +52,7 @@ class HandwritingRecognizer:
     def __init__(self):
         self.extraction_prompt = """
 You are an expert in handwriting recognition and text extraction.
-Your task is to extract **only the text** exactly as it appears in the image.
+Your task is to extract **only the text** exactly as it appears i'n the image.
 Do not add any descriptions, explanations, or formatting notes.
 Strictly maintain:
 - Original structure (paragraphs, sections, equations).
@@ -65,6 +65,10 @@ Strictly maintain:
 - Extra formatting details beyond what is present.
 
 Only return the extracted text, formatted exactly as it appears and please do maintain the structure.
+
+
+
+
 
         """
 
@@ -152,7 +156,7 @@ class PDFHandwritingExtractor:
             )
 
             for page_num, text in extracted_texts:
-                story.append(Paragraph(f"<b>Page {page_num}</b>", styles['Heading2']))
+                story.append(Paragraph(f"<b>Page {page_num}</b> ", styles['Heading2']))
                 for para in text.split('\n'):
                     if para.strip():
                         story.append(Paragraph(para, text_style))
