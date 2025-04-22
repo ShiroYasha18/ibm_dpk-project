@@ -1,0 +1,9 @@
+[
+  {
+    "document_id": "b1128568-3d86-4d9b-9c7b-435f756f78be",
+    "filename": "extracted_meow 2.pdf",
+    "answers": {
+      "1B": "\")\n- 3. Make sure to associate diagrams with the correct answer number\n- 4. If a diagram appears between two answers, determine which answer it belongs to based on context\n- 5. If a diagram appears at the top of a page, check if it belongs to an answer from the previous page\n\n**[DIAGRAM]**\n\nNucleus\n\nNucleolus\n\nMitochondria\n\nChloroplast\n\nVacuole\n\nCell wall\n\nCell membrane\n\n**Answer 2A)** Photosynthesis is the process by which green plants make their own food using sunlight, carbon dioxide, and water. It produces glucose and oxygen, which is essential for animals and humans to breathe.\n\n**Answer 2B)**"
+    }
+  }
+]
