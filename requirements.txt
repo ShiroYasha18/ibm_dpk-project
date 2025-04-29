@@ -1,0 +1,8 @@
+pytesseract
+pillow
+transformers
+groq
+python-dotenv
+PyPDF2
+data-prep-toolkit>=0.2.3.dev0
+data-prep-toolkit>=0.2.3.dev1
