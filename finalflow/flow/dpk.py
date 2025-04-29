@@ -27,7 +27,7 @@ def process_pdf_to_parquet(input_pdf, output_folder):
 
 # Example usage
 if __name__ == "__main__":
-    input_pdf_path = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/output_folder/extracted_text.pdf"
-    output_parquet_folder = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/out_parquet"
+    input_pdf_path = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/output_folder/extracted_text.pdf"
+    output_parquet_folder = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/out_parquet"
 
 process_pdf_to_parquet(input_pdf_path, output_parquet_folder)

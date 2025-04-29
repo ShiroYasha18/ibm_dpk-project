@@ -2,9 +2,9 @@ import ast
 import os
 import sys
 
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project'))
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project/pdf2parquet'))
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project/data_processing'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj/pdf2parquet'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj/data_processing'))
 print("sys.path:", sys.path)
 
 try:
@@ -13,7 +13,7 @@ try:
 except ModuleNotFoundError:
     print("data_processing module not found!")
 
-sys.path.append('/Users/tanishta/Desktop/ibm_dpk-project/pdf2parquet')
+sys.path.append('/Users/tanishta/Desktop/ibm_dpk-proj/pdf2parquet')
 from data_processing.runtime.pure_python import PythonTransformLauncher
 from pdf2parquet.dpk_pdf2parquet.transform_python import Pdf2ParquetPythonTransformConfiguration
 from typing_extensions import runtime

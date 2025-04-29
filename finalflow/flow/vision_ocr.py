@@ -50,7 +50,7 @@ class HandwritingRecognizer:
 if __name__ == "__main__":
     recognizer = HandwritingRecognizer()
 
-    image_path = "/Users/tanishta/Desktop/GitHub/ibm_dpk-project/me/answer.jpeg"
+    image_path = "/Users/tanishta/Desktop/GitHub/ibm_dpk-proj/me/answer.jpeg"
 
     try:
         image = Image.open(image_path)

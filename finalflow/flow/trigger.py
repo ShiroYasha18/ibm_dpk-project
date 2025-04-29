@@ -149,16 +149,16 @@ def process_parquet_directory(input_dir: str, output_json: str):
 
 
 async def main():
-    input_pdf = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"  # Input PDF
-    extracted_text_pdf = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
-    temp_image_dir = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/tempimg"
-    input_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/clean_pdf"
-    output_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/parquet"
-    input_folder_parquet_answerkey = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/clean_pdf"
-    output_folder_parquet_answerkey= "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/parquet"
-    output_json_answerkey="/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/Json_with_answers/"
-    output_json_answersheet="/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Json_with_answers/"
-    result= "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/results"
+    input_pdf = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"  # Input PDF
+    extracted_text_pdf = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
+    temp_image_dir = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/tempimg"
+    input_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/clean_pdf"
+    output_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/parquet"
+    input_folder_parquet_answerkey = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/clean_pdf"
+    output_folder_parquet_answerkey= "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/parquet"
+    output_json_answerkey="/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/Json_with_answers/"
+    output_json_answersheet="/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Json_with_answers/"
+    result= "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/results"
 
     extractor = PDFHandwritingExtractor()
 

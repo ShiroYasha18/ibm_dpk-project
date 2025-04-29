@@ -73,6 +73,6 @@ def process_parquet_directory(input_dir: str, output_dir: str, similarity_output
     print(f"Similarity scores saved in {similarity_output}")
 
 if __name__ == "__main__":
-    input="/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/parquet"
-    output="/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/Json_with_answers"
+    input="/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/parquet"
+    output="/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/Json_with_answers"
     process_file(input, output)

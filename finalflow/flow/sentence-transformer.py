@@ -117,8 +117,8 @@ def compare_jsons(folder1, folder2, output_folder):
 
 
 if __name__ == "__main__":
-    folder1 = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/Json_with_answers"
-    folder2 = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Json_with_answers"
-    output_folder = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/results"
+    folder1 = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/Json_with_answers"
+    folder2 = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Json_with_answers"
+    output_folder = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/results"
 
     compare_jsons(folder1, folder2, output_folder)

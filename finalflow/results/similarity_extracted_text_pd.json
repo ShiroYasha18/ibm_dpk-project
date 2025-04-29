@@ -1,11 +1,11 @@
 {
     "file1": {
-        "path": "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Json_with_answers/extracted_text.json",
+        "path": "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Json_with_answers/extracted_text.json",
         "document_id": "56aa7ef6-64e2-4997-842f-db1c9e1b8211",
         "filename": "extracted_text.pdf"
     },
     "file2": {
-        "path": "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/Json_with_answers/pd.json",
+        "path": "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/Json_with_answers/pd.json",
         "document_id": "25c4baf4-610c-402c-abd7-bafac7d0103b",
         "filename": "pd.pdf"
     },

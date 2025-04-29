@@ -74,5 +74,5 @@ def plot_all_difficulties(file_path):
         plot_similarity_scores(data, difficulty, title=f"Similarity Scores for {difficulty.capitalize()} Difficulty")
 
 # Example usage
-file_path = "/Users/tanishta/Desktop/GitHub/ibm_dpk-project/Dataprep/res/res21.json"
+file_path = "/Users/tanishta/Desktop/GitHub/ibm_dpk-proj/Dataprep/res/res21.json"
 plot_all_difficulties(file_path)

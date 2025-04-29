@@ -9,17 +9,17 @@ import pandas as pd
 import io
 
 # Add project paths
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project'))
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project/pdf2parquet'))
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project/data_processing'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj/pdf2parquet'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj/data_processing'))
 
 from data_processing.runtime.pure_python import PythonTransformLauncher
 from pdf2parquet.dpk_pdf2parquet.transform_python import Pdf2ParquetPythonTransformConfiguration
 
 # Paths for storing uploaded files
-ANSWERKEY_FOLDER = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/clean_pdf"
-ANSWERSHEET_FOLDER = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Handwritten"
-RESULTS_FOLDER = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/results"
+ANSWERKEY_FOLDER = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/clean_pdf"
+ANSWERSHEET_FOLDER = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Handwritten"
+RESULTS_FOLDER = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/results"
 
 os.makedirs(ANSWERKEY_FOLDER, exist_ok=True)
 os.makedirs(ANSWERSHEET_FOLDER, exist_ok=True)

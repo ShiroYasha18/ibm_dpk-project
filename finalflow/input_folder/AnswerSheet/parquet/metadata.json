@@ -48,11 +48,11 @@
     "nskip": 0
   },
   "source": {
-    "name": "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/clean_pdf",
+    "name": "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/clean_pdf",
     "type": "path"
   },
   "target": {
-    "name": "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/parquet",
+    "name": "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/parquet",
     "type": "path"
   }
 }

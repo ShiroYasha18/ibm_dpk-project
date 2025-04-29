@@ -7,8 +7,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/image-text-extractor.git](https://github.com/ShiroYasha18/ibm_dpk-project
-cd ibm_dpk-project
+git clone https://github.com/yourusername/image-text-extractor.git](https://github.com/ShiroYasha18/ibm_dpk-proj
+cd ibm_dpk-proj
 ```
 
 ### 2. Set Up Virtual Environment

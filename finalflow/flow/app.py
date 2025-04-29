@@ -20,8 +20,8 @@ from pdf2parq import convert_pdf_to_parquet
 from ibm_watsonx_ai import APIClient, Credentials
 from ibm_watsonx_ai.foundation_models import ModelInference
 
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project'))
-sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-project/pdf2parquet'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj'))
+sys.path.append(os.path.abspath('/Users/tanishta/Desktop/ibm_dpk-proj/pdf2parquet'))
 
 data_processing_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data_processing'))
 sys.path.append(data_processing_path)
@@ -197,17 +197,17 @@ def get_final_results(file_path, thresholds, difficulty_level, total_marks):
     level_thresholds = thresholds[mapped_key]
 
 async def main(difficulty, total_marks, thresholds):
-    input_pdf = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"
-    extracted_text_pdf = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
-    input_pdf_answerkey = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/clean_pdf/pd.pdf"
-    temp_image_dir = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/tempimg"
-    input_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/clean_pdf"
-    output_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/parquet"
-    input_folder_parquet_answerkey = "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/clean_pdf"
-    output_folder_parquet_answerkey= "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/parquet"
-    output_json_answerkey="/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerKey/Json_with_answers/"
-    output_json_answersheet="/Users/tanishta/Desktop/ibm_dpk-project/finalflow/input_folder/AnswerSheet/Json_with_answers/"
-    result= "/Users/tanishta/Desktop/ibm_dpk-project/finalflow/results"
+    input_pdf = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Handwritten/mew.pdf"
+    extracted_text_pdf = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/clean_pdf/extracted_text.pdf"
+    input_pdf_answerkey = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/clean_pdf/pd.pdf"
+    temp_image_dir = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/tempimg"
+    input_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/clean_pdf"
+    output_folder_parquet_answersheet = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/parquet"
+    input_folder_parquet_answerkey = "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/clean_pdf"
+    output_folder_parquet_answerkey= "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/parquet"
+    output_json_answerkey="/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerKey/Json_with_answers/"
+    output_json_answersheet="/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/input_folder/AnswerSheet/Json_with_answers/"
+    result= "/Users/tanishta/Desktop/ibm_dpk-proj/finalflow/results"
 
     print("PDF conversion completed!")
     extractor = PDFHandwritingExtractor()
