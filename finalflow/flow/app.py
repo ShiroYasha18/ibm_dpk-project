@@ -44,7 +44,7 @@ params = {"decoding_method": "greedy", "max_new_tokens": 500}
 model = ModelInference(
     model_id=model_id,
     credentials=credentials,
-    project_id=PROJECT_ID,
+    project_id=PROJECT_ID, 
     params=params
 )
 
