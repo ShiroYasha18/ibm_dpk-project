@@ -32,7 +32,12 @@ This project provides an end-to-end pipeline for evaluating handwritten answer s
  For pdf2parquet submodule:
  ```
    pip install -r pdf2parquet/   
-   requirements.txt```
+   requirements.txt
+   ```
+3. Set up environment variables:
+   - Create a.env file in the project root.
+   - Add your API keys and other configuration variables.
+   - Example.env file is provided for reference.
    
 
 ## Usage
