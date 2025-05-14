@@ -1,0 +1,11 @@
+**/*.pdf
+**/*.jpg
+**/*.jpeg
+**/*.parquet
+**/*.json
+.venv/
+.cache/
+.idea/
+__pycache__/
+.git/
+.env
