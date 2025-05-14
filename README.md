@@ -45,9 +45,8 @@ See `requirements.txt` for a full list of dependencies
 
 If you encounter issues:
 1. Ensure your virtual environment is activated
-2. Verify your Groq API key is correct
-3. Check that your `.env` file is in the correct location
-4. Make sure all dependencies are installed correctly
+2. Check that your `.env` file is in the correct location
+3. Make sure all dependencies are installed correctly
 
 ## Contributing
 
