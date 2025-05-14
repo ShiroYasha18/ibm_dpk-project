@@ -24,17 +24,17 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Define paths
-BASE_DIR = Path("/Users/ayrafraihan/Desktop/pythonProject1/finalflow")
-ANSWERSHEET_DIR = BASE_DIR / "input_folder/AnswerSheet/Handwritten"
-ANSWERKEY_DIR = BASE_DIR / "input_folder/AnswerKey/clean_pdf"
-ANSWERSHEET_CLEAN_DIR = BASE_DIR / "input_folder/AnswerSheet/clean_pdf"
-ANSWERSHEET_PARQUET_DIR = BASE_DIR / "input_folder/AnswerSheet/parquet"
-ANSWERKEY_PARQUET_DIR = BASE_DIR / "input_folder/AnswerKey/parquet"
-ANSWERSHEET_JSON_DIR = BASE_DIR / "input_folder/AnswerSheet/Json_with_answers"
-ANSWERKEY_JSON_DIR = BASE_DIR / "input_folder/AnswerKey/Json_with_answers"
-RESULTS_DIR = BASE_DIR / "results"
-TEMP_IMAGE_DIR = BASE_DIR / "input_folder/AnswerSheet/tempimg"
+# Define paths using environment variables
+BASE_DIR = Path(__file__).resolve().parent.parent
+ANSWERSHEET_DIR = Path(os.getenv('ANSWERSHEET_DIR', BASE_DIR / "input_folder/AnswerSheet/Handwritten"))
+ANSWERKEY_DIR = Path(os.getenv('ANSWERKEY_DIR', BASE_DIR / "input_folder/AnswerKey/clean_pdf"))
+ANSWERSHEET_CLEAN_DIR = Path(os.getenv('ANSWERSHEET_CLEAN_DIR', BASE_DIR / "input_folder/AnswerSheet/clean_pdf"))
+ANSWERSHEET_PARQUET_DIR = Path(os.getenv('ANSWERSHEET_PARQUET_DIR', BASE_DIR / "input_folder/AnswerSheet/parquet"))
+ANSWERKEY_PARQUET_DIR = Path(os.getenv('ANSWERKEY_PARQUET_DIR', BASE_DIR / "input_folder/AnswerKey/parquet"))
+ANSWERSHEET_JSON_DIR = Path(os.getenv('ANSWERSHEET_JSON_DIR', BASE_DIR / "input_folder/AnswerSheet/Json_with_answers"))
+ANSWERKEY_JSON_DIR = Path(os.getenv('ANSWERKEY_JSON_DIR', BASE_DIR / "input_folder/AnswerKey/Json_with_answers"))
+RESULTS_DIR = Path(os.getenv('RESULTS_DIR', BASE_DIR / "results"))
+TEMP_IMAGE_DIR = Path(os.getenv('TEMP_IMAGE_DIR', BASE_DIR / "input_folder/AnswerSheet/tempimg"))
 
 # Ensure directories exist
 for directory in [ANSWERSHEET_DIR, ANSWERKEY_DIR, ANSWERSHEET_CLEAN_DIR, 
