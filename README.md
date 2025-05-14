@@ -35,31 +35,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Get Groq API Key
-
-1. Go to [Groq's website](https://console.groq.com/)
-2. Sign up or log in to your account
-3. Navigate to API section
-4. Generate a new API key
-5. Copy your API key
-
-### 5. Set Up Environment Variables
-
-1. Create a new file named `.env` in the project root directory
-2. Add your Groq API key to the `.env` file:
-```
-GROQ_API_KEY="your_api_key_here"
-```
-3. Save the file
-
-### 6. Running the Application
-
-```bash
-python image_processor.py
-```
-
-
-
 ## Requirements
 
 See `requirements.txt` for a full list of dependencies
