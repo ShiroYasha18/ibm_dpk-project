@@ -8,7 +8,6 @@
 
 ```bash
 git clone https://github.com/yourusername/Tanishta15/ibm_dpk-proj
->>>>>>> b6fc94e422b66db0b0f477d27a1b991ec854afc7
 cd ibm_dpk-proj
 ```
 
