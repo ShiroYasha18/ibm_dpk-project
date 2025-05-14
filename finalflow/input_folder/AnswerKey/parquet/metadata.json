@@ -5,8 +5,8 @@
     "job name": "pdf2parquet",
     "job type": "pure python",
     "job id": "job_id",
-    "start_time": "2025-05-14 05:25:02",
-    "end_time": "2025-05-14 05:25:07",
+    "start_time": "2025-05-14 06:23:05",
+    "end_time": "2025-05-14 06:23:10",
     "status": "success"
   },
   "code": null,
@@ -30,9 +30,9 @@
     "num_processors": 0
   },
   "execution_stats": {
-    "cpus": 39.1,
+    "cpus": 39.3,
     "gpus": 0,
-    "memory": 3.25,
+    "memory": 3.82,
     "object_store": 0,
     "execution time, min": 0.082
   },
@@ -41,7 +41,7 @@
     "source_size": 55207,
     "result_files": 1,
     "result_size": 15437,
-    "processing_time": 1.051,
+    "processing_time": 1.097,
     "nrows": 1,
     "nsuccess": 1,
     "nfail": 0,

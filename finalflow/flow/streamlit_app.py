@@ -5,11 +5,15 @@ import asyncio
 import sys
 from pathlib import Path
 
-# Add the current directory and parent directory to the path to import local modules
-sys.path.append(os.path.dirname(__file__))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))  # Parent dir
-# Add the pdf2parquet module to the path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+# Set up Python path properly - only add each directory once
+base_dir = os.path.dirname(__file__)  # flow directory
+parent_dir = os.path.abspath(os.path.join(base_dir, ".."))  # finalflow directory
+root_dir = os.path.abspath(os.path.join(base_dir, "../../"))  # pythonProject1 directory
+
+# Add paths only if they're not already in sys.path
+for path in [base_dir, parent_dir, root_dir]:
+    if path not in sys.path:
+        sys.path.append(path)
 
 # Import the main processing functions
 from app import PDFHandwritingExtractor, convert_pdf_to_parquet, process_parquet_directory
