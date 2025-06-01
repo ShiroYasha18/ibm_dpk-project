@@ -83,13 +83,14 @@ https://github.com/user-attachments/assets/bdde3cf9-9263-4206-8417-873bde0257d2
 - Follow the web UI to upload answer sheets and answer keys, process files, and view results.
 ## Configuration
 - Environment variables (API keys, etc.) can be set in a .env file.
--The sample .env file is provided for reference:
-```
-IBM_API_KEY=""
-IBM_SERVICE_URL=""
-IBM_PROJECT_ID=""
-```
--Get these keys from watsonx.ai , which you will get when you create a API key for the foundational models- these can be changed with respect to the model card in the code.
+- The sample .env file is provided for reference:
+   ``` 
+   IBM_API_KEY=""
+   IBM_SERVICE_URL=""
+   IBM_PROJECT_ID=""
+   ``` 
+
+- Get these keys from watsonx.ai , which you will get when you create a API key for the foundational models- these can be changed with respect to the model card in the code.
 
 - Paths for input/output folders are configurable in the code.
 ## Requirements
