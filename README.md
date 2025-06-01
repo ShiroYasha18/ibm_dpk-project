@@ -17,7 +17,7 @@
   Your browser does not support the video tag.
 </video>
 
-🔗 [Video Demo Link](https://github.com/user-attachments/assets/bdde3cf9-9263-4206-8417-873bde0257d2)
+https://github.com/user-attachments/assets/bdde3cf9-9263-4206-8417-873bde0257d2
 
 ---
 
