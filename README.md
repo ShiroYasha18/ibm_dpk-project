@@ -1,37 +1,62 @@
-# Handwritten Answer Sheet Evaluation Platform
+# 📝 Handwritten Answer Sheet Evaluation Platform
 
-This project provides an end-to-end pipeline for evaluating handwritten answer sheets against answer keys using OCR, NLP, and similarity scoring. It leverages IBM WatsonX,Granite 3.3 vision models, and modern data processing tools.
+🔍 This project provides an **end-to-end pipeline** for evaluating handwritten answer sheets against answer keys using **OCR**, **NLP**, and **similarity scoring**. It leverages **IBM WatsonX**, **Granite 3.3 Vision models**, and modern data processing tools for scalable, intelligent assessment.
 
-### Architecture
+---
+
+## 🧠 Architecture
+
 ![Architecture Diagram](media/Handwritten%20Visual%20Question%20EXTRACTED%20TEXT-1%202.jpg)
-### Demo
+
+---
+
+## 🎬 Demo
 
 <video width="600" controls>
   <source src="media/Untitled (1).mov" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-https://github.com/user-attachments/assets/bdde3cf9-9263-4206-8417-873bde0257d2
+🔗 [Video Demo Link](https://github.com/user-attachments/assets/bdde3cf9-9263-4206-8417-873bde0257d2)
+
+---
+
+## ✨ Features
+
+- ✅ Upload **handwritten answer sheets** and **answer keys (PDF)**
+- 🧠 Extract text using advanced OCR: **WatsonX**, **Tesseract**, or **Gemini**
+- 📄 Convert PDFs to **Parquet** and **JSON** for structured processing
+- 📊 Compute **similarity scores** between student and teacher answers
+- 🌐 Interactive **Streamlit** web interface for processing & results
+- 🔌 **Modular codebase** — easy to plug in custom models or tools
+
+---
+
+## 🚧 Challenges
+
+- ✍️ **Handwriting Styles** – Cursive, block letters, etc., cause OCR inconsistencies  
+- 🗂 **Different Layouts** – Adapting to varied answer sheet formats  
+- ❌ **Scribbles & Missing Answers** – Common in real-world sheets, affecting accuracy  
+
+---
+
+## ⚠️ Limitations
+
+- 📉 **Diagram Recognition** – Only simple diagrams like flowcharts or trees are supported  
+- 🖼️ **Graphics-Heavy Content** – Complex images reduce OCR and NLP accuracy  
+
+---
+
+## 🔮 Future Scope
+
+- 📈 **Enhanced Diagram Support** – Improve complex diagram understanding  
+- ☁️ **Mass Data Storage Integration** – Add **KFP**, **S3**, etc., for scalable storage and processing  
+
+---
+
+## 📁 Directory Structure
 
 
-### Features
-- Upload handwritten answer sheets and answer keys (PDF)
-- Extract text using advanced OCR (WatsonX, Tesseract, or Gemini)
-- Convert PDFs to Parquet and JSON for structured processing
-- Compute similarity scores between student and teacher answers
-- Interactive Streamlit web interface for processing and result visualization
-- Modular codebase with support for custom embedding models and pipelines
-### Challenges
-- Handling Handwritten Text : The system faces challenges in accurately interpreting various handwriting styles, including cursive and block letters. Variations in handwriting can lead to misinterpretations or missed text.
-- Different Layouts : Answer sheets may have different layouts, which can complicate the extraction process. The system needs to adapt to various formats and structures.
-- Scribbles and Missing Answers : Handwritten documents often contain scribbles, corrections, and missing answers, which can affect the accuracy of data extraction.
-### Limitations
-- Diagram Recognition : Currently, the system is limited in its ability to process complex diagrams. It performs well with simple diagrams like flowcharts and tree structures but struggles with more intricate graphics.
-- Graphics-Heavy Content : The system may not accurately interpret documents with heavy graphical content, affecting the extraction of relevant information.
-### Future Scope
-- Enhanced Diagram Handling : Future developments aim to improve the system's ability to process complex diagrams, expanding its utility in diverse document types.
-- Integration with Mass Data Storage : Plans include connecting the system with platforms like KFP and S3 for efficient data retrieval and storage, facilitating large-scale processing of answer sheets and answer keys.
-## Directory Structure
 - `finalflow/flow/` — Main pipeline, Streamlit app, and processing scripts
 - `Dataprep/` — Data preparation, embedding, and visualization utilities
 - `pdf2parquet/` — PDF to Parquet conversion tools
