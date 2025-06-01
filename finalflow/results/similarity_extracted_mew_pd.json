@@ -1,12 +1,12 @@
 {
     "file1": {
         "path": "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerSheet/Json_with_answers/extracted_mew.json",
-        "document_id": "8a569d7e-2f3e-45a3-94b4-c5a9e03c17c5",
+        "document_id": "3cca8cab-aa10-4ded-95f9-7172a334febc",
         "filename": "extracted_mew.pdf"
     },
     "file2": {
         "path": "/Users/ayrafraihan/Desktop/pythonProject1/finalflow/input_folder/AnswerKey/Json_with_answers/pd.json",
-        "document_id": "14267a5c-504c-46d3-973a-1a3924fc85e6",
+        "document_id": "37a1f10f-af1d-48d8-b7a0-13049a2104c6",
         "filename": "pd.pdf"
     },
     "comparisons": [

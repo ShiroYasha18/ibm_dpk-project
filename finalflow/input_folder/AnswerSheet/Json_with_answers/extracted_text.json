@@ -1,13 +1,14 @@
 [
   {
-    "document_id": "4c42631f-35cf-41bf-8ec7-e33411c8eed7",
+    "document_id": "a624287e-c34d-4ec7-a0ca-3ee2adb17a0c",
     "filename": "extracted_text.pdf",
     "answers": {
-      "1A": "If XCl2 then X should be a metal with valency 2 Therefore - (1) Sulphate formula : XSO4 (2) Hydroxide formula : X(OH)2",
-      "1B": "XN2 is nitride X is a valency 3 metal as nitrogen has valency 3 Therefore Sulphate's formula would be X2(SO4)3 and Hydroxide formula would be X(OH)3",
-      "1C": "valency of Nitrogen in 1) NO : +2 2) N2O : +1 3) NO2 : +4 3) NO2 : +4",
-      "2B": "The eight metals showing variable valency 1) Iron (Fe) : +2,+3 2) copper (Cu) :+1,+2 3) Mercury (Hg) : +1,+2 4) Tin (Sn) : +2,+4 5) Lead (Pb) : +2,+4 6) Gold (Au) : +1,+3 7) Chromium (Cr) : +2,+3,+4,+6 8) Manganese (Mn) : +2,+3,+4,+6,+7",
-      "2C": "Examples of Chemical Equations : ## Page 2 **(a)** - * One product: 2H2 + O2 \\(\\rightleftharpoons\\) 2H2O - **(b)** - * Two products: CaCO3 \\(\\rightarrow\\) CaO + CO2 + \\(\\Delta\\) - **(c)** - * Three products: 4HNO3 \\(\\rightarrow\\) 2H2O + 4NO2 + O2 - **(d)** - * Four products: 2KClO3 \\(\\rightarrow\\) 2KCl + 3O2 + \\(\\Delta\\) Answer: 2D"
+      "1A": "If XCl2 then X should be a metal with valency 2** Therefore - (1) Sulphate formula: XSO4 - (2) Hydroxide formula: X(OH)2 - **",
+      "1B": "XN is nitride X is a valency 3 metal as nitrogen has valency 3** Therefore Sulphate's formula would be X2(SO4)3 and Hydroxide formula would be X(OH)3 - **",
+      "1C": "valency of Nitrogen in:** - 1) NO: +2 - 2) N2O: +1 3) NO2: +4 - **",
+      "2B": "The eight metals showing variable valency** - 1) Iron (Fe): +2, +3, - 2) Copper (Cu): +1, +2 - 3) Mercury (Hg): +1, +2 - 4) Tin (Sn): +2, +4 - 5) Lead (Pb): +2, +4 - 6) Gold (Au): +1, +3 - 7) Chromium (Cr): +2, +3, +6 - 8) Manganese (Mn): +2, +3, +4, +6, +7 - **",
+      "2C": "Examples of Chemical Equations:** ## Page 2 ``` (a) One product : 2H2 + O2 ﬁ 2H2O (b) Two Products : CaCO3 ﬁ Cao + CO2 + ``` (C) Three Products : 4HNO3 ﬁ 2H2O + 4NO2 + O2 - (d) Four Products : 2KClO3 (d) Four Products : 2KClO3 ﬁ 2KCl + 2O2 + O2 +",
+      "2D": ""
     }
   }
 ]
