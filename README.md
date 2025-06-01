@@ -1,6 +1,9 @@
 # Handwritten Answer Sheet Evaluation Platform
 
-This project provides an end-to-end pipeline for evaluating handwritten answer sheets against answer keys using OCR, NLP, and similarity scoring. It leverages IBM WatsonX, Llama 3.2 vision models, and modern data processing tools.
+This project provides an end-to-end pipeline for evaluating handwritten answer sheets against answer keys using OCR, NLP, and similarity scoring. It leverages IBM WatsonX,Granite 3.3 vision models, and modern data processing tools.
+
+### Architecture
+![Architecture Diagram](media/Handwritten%20Visual%20Question%20EXTRACTED%20TEXT-1%202.jpg)
 ### Demo
 
 <video width="600" controls>
