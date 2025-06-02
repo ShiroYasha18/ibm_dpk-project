@@ -1,4 +1,6 @@
-# 📝 Handwritten Answer Sheet Evaluation Platform
+Made with ❤️ by Ayraf
+
+# Handwritten Answer Sheet Evaluation Platform
 
 🔍 This project provides an **end-to-end pipeline** for evaluating handwritten answer sheets against answer keys using **OCR**, **NLP**, and **similarity scoring**. It leverages **IBM WatsonX**, **Granite 3.3 Vision models**, and modern data processing tools for scalable, intelligent assessment.
 
@@ -62,7 +64,7 @@ https://github.com/user-attachments/assets/bdde3cf9-9263-4206-8417-873bde0257d2
 - `pdf2parquet/` — PDF to Parquet conversion tools
 - `src/` — Additional scripts and utilities
 
-## Installation
+## ⚙️ Installation
 1. Clone the repository:
    ```bash
    git clone <repo-url>
